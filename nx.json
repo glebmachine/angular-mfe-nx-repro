@@ -1,0 +1,25 @@
+{
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "mfe-nx-demo",
+  "projects": {
+    "mfe-nx-demo": {
+      "tags": []
+    },
+    "mfe-nx-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "mfe-nx-demo"
+      ]
+    }
+  }
+}
