@@ -1,27 +1,28 @@
-# MfeNxDemo
+# Репро с сломанной сборкой локальных зависимостей
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0-next.0.
+Репа позволяет воспроизвести пример, когда AngularCompilerPlugin ломается, при попытке в монорепе пошерить локальную зависимость между микрофронтами
 
-## Development server
+## О репе
+В ней воссоздан пример, когда есть корневой (shell) приложение, и один микрофронтенд
+А так же - шеренная либа авторизации.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Задача
+Cобрать раздельно 2 приложения, но пошерить через module federation внешние и внутренние зависимости 
+(поскольку у нас микрофронты цепляются как модули - мы не будем делать отдельной шины, а просто будет использовать синглтоны из DI. Единственное для этого требование - ссылочно должны отдаваться одинаковые зависимости в каждый из микрофронтов)
 
-## Code scaffolding
+### Реализация
+Нужно, чтобы локальная либа шерилась через федерацию модулей ровно так, как это делает любая либа из модулей.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Проблема
+При попытке вебпака собрать либу у нас теряется ссылка на экземпляр AngularCompulerPlugin'a и ломается сборка.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Как вопроизвести:
+1. Спулья
+2. `yarn`
+3. 
+```ng
+ng run shell:serve - шел 
+ng run mfe1:serve - один из микрофронтов
+```
+4. Чтобы убедиться, что без шеринга работает порядок, надо убрать из webpack.config.js'a строчки с обьявлением локальной зависимости
