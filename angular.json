@@ -13,7 +13,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/shell",
             "index": "apps/shell/src/index.html",
@@ -21,9 +21,15 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-            "styles": ["apps/shell/src/styles.css"],
-            "scripts": []
+            "assets": [
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
+            ],
+            "styles": [
+              "apps/shell/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -51,18 +57,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "shell:build"
+            "browserTarget": "shell:build",
+            "extraWebpackConfig": "apps/shell/webpack.config.js",
+            "port": 5000
           },
           "configurations": {
             "production": {
-              "browserTarget": "shell:build:production"
+              "browserTarget": "shell:build:production",
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
@@ -73,15 +83,21 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "apps/shell/src/test.ts",
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.spec.json",
             "karmaConfig": "apps/shell/karma.conf.js",
-            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-            "styles": ["apps/shell/src/styles.css"],
-            "scripts": []
+            "assets": [
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
+            ],
+            "styles": [
+              "apps/shell/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         },
         "lint": {
@@ -91,7 +107,9 @@
               "apps/shell/tsconfig.app.json",
               "apps/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -125,7 +143,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/auth"],
+          "outputs": [
+            "coverage/libs/auth"
+          ],
           "options": {
             "jestConfig": "libs/auth/jest.config.js",
             "passWithNoTests": true
@@ -140,7 +160,7 @@
       "prefix": "namespace",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/mfe1",
             "index": "apps/mfe1/src/index.html",
@@ -148,9 +168,15 @@
             "polyfills": "apps/mfe1/src/polyfills.ts",
             "tsConfig": "apps/mfe1/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/mfe1/src/favicon.ico", "apps/mfe1/src/assets"],
-            "styles": ["apps/mfe1/src/styles.css"],
-            "scripts": []
+            "assets": [
+              "apps/mfe1/src/favicon.ico",
+              "apps/mfe1/src/assets"
+            ],
+            "styles": [
+              "apps/mfe1/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/mfe1/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -178,18 +204,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/mfe1/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "mfe1:build"
+            "browserTarget": "mfe1:build",
+            "extraWebpackConfig": "apps/mfe1/webpack.config.js",
+            "port": 3001
           },
           "configurations": {
             "production": {
-              "browserTarget": "mfe1:build:production"
+              "browserTarget": "mfe1:build:production",
+              "extraWebpackConfig": "apps/mfe1/webpack.prod.config.js"
             }
           }
         },
@@ -209,11 +239,14 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/mfe1"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/mfe1"
+          ],
           "options": {
             "jestConfig": "apps/mfe1/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/mfe1/webpack.config.js"
           }
         }
       }
