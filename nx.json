@@ -7,19 +7,11 @@
     "nx.json": "*",
     "tsconfig.base.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
-  "npmScope": "mfe-nx-demo",
+  "affected": { "defaultBase": "master" },
+  "npmScope": "namespace",
   "projects": {
-    "mfe-nx-demo": {
-      "tags": []
-    },
-    "mfe-nx-demo-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "mfe-nx-demo"
-      ]
-    }
+    "shell": { "tags": [] },
+    "auth": { "tags": [] },
+    "mfe1": { "tags": [] }
   }
 }
