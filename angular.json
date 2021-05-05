@@ -21,6 +21,7 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "aot": true,
+            "namedChunks": true,
             "assets": [
               "apps/shell/src/favicon.ico",
               "apps/shell/src/assets"
@@ -168,6 +169,7 @@
             "polyfills": "apps/mfe1/src/polyfills.ts",
             "tsConfig": "apps/mfe1/tsconfig.app.json",
             "aot": true,
+            "namedChunks": true,
             "assets": [
               "apps/mfe1/src/favicon.ico",
               "apps/mfe1/src/assets"

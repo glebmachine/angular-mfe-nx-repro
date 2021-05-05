@@ -11,10 +11,16 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "mfe1"
+    uniqueName: "mfe1",
+    publicPath: "auto"
   },
   optimization: {
     runtimeChunk: false
+  },
+  resolve: {
+    alias: {
+      ...sharedMappings.getAliases(),
+    }
   },
   plugins: [
     new ModuleFederationPlugin({

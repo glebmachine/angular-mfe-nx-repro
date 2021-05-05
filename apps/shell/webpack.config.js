@@ -11,10 +11,16 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "shell"
+    uniqueName: "shell",
+    publicPath: "auto"
   },
   optimization: {
     runtimeChunk: false
+  },
+  resolve: {
+    alias: {
+      ...sharedMappings.getAliases(),
+    }
   },
   plugins: [
     new ModuleFederationPlugin({
